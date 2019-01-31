@@ -44,11 +44,11 @@ public class DbConn {
             Class.forName(DRIVER).newInstance();
             try {
                 // Assume you are running from home using tunneling...
-                String url = "jdbc:mysql://localhost:3307/SP18_3344_tug78561?user=tug78561&password=zeecheit";
+                String url = "jdbc:mysql://localhost:3307/SP18_3344_tug78561?user=tug78561&password= ";
 
                 // unless you are working from temple (wachman hall)
                 if (isTemple) {
-                    url = "jdbc:mysql://cis-linux2.temple.edu:3306/SP18_3344_tug78561?user=tug78561&password=zeecheit";
+                    url = "jdbc:mysql://cis-linux2.temple.edu:3306/SP18_3344_tug78561?user=tug78561&password= ";
                 }
                 this.conn = DriverManager.getConnection(url);
 
