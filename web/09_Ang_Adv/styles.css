@@ -1,0 +1,78 @@
+body {
+    font-family: arial, san-serif;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    background-color: #FAF1E8;
+}
+#titleNav {
+    font-family: fantasy, san-serif;
+    width:100%;
+    background-color: brown;
+    border: 2px solid rgba(200,200,200,0.5);
+    min-height: 78px;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+}
+
+#nav {
+    float:right;
+}
+.navLink {
+    background-color:  #FAF1E8;
+    font-size: 16px;
+    padding: 25px;
+    margin-left: 4px;
+    float:left;
+    box-sizing: border-box;
+}
+.navLink a {
+    text-decoration: none;
+    color: brown;
+    
+}
+
+#title{
+    float:left;
+    font-size: 28px;
+    padding: 2px;
+    padding-left:8px;
+    box-sizing: border-box;
+}
+#contentArea {
+    padding: 12px;
+}
+
+th, .fieldName {
+    background-color:brown;
+    padding: 3px 6px;
+}
+
+th a, .fieldName {
+    color:white;
+    text-decoration: none;
+}
+.fieldName {
+    text-align: right;
+    padding-right: 1ex;
+}
+.fieldValue {
+    min-width: 20ex;
+}
+.fieldError {
+    color: red;
+    font-size: 0.8em;
+}
+td {
+    background-color: rgba(240,180,180,0.8);
+    padding: 6px 6px; /* top/bottom then left/right */
+}
+
+li {
+    line-height: 1.4em;
+    margin-left: -12px;
+}
+img {
+    width: 15px;
+}

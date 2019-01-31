@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Angular List Data</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+
+        <link href="styles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body ng-app="app">
+        
+
+        <div id='titleNav'>
+            <div id='title'>ALVI BRAIDS</div>
+            <div id='nav'>
+                <div class='navLink'><a href='index.html'>Home</a></div>
+                <div class='navLink'><a href='insert.html'>Insert</a></div>
+            </div>
+        </div>
+        <div style='clear:both'></div>
+
+        <div id='contentArea' ng-controller="contentController"> 
+
+            <h2>Product List</h2>
+            <table>
+                <tr>
+                    <th><a href="" ng-click="sortField = 'productId'; reverse = !reverse">Id <img src="sortUpDown16.png"></a></th>
+                    <th style="text-align: left"><a href="" ng-click="sortField = 'productDesc'; reverse = !reverse">Description <img src="sortUpDown16.png"></a></th>
+                    <th style="text-align: left"><a href="" ng-click="sortField = 'retailPrice'; reverse = !reverse">Price <img src="sortUpDown16.png"></a></th>
+                    <th><a href="" ng-click="sortField = 'productMaterial'; reverse = !reverse">Material <img src="sortUpDown16.png"></a></th>
+                    <th><a>Image</a></th>
+                </tr>
+                <tr ng-repeat="product in products| filter:query | orderBy:sortField:reverse">
+
+                    <td>{{product.productId}}</td>
+                    <td>{{product.productDesc}}</td>
+                    <td>{{product.retailPrice}}</td>
+                    <td>{{product.productMaterial}}</td>
+                    
+                    <td><img ng-src="{{product.imageName}}" ng-style="{width:'150px'}" /></td>
+                </tr>
+            </table>
+
+            {{deleteMsg}}
+            <br>
+            {{listMsg}}
+
+        </div>
+
+        <script src='js/productAppAndController.js'></script>
+    </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://fb.me/react-15.2.1.js"></script>
+        <script src="https://fb.me/react-dom-15.2.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            * {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+  background: #FAF1E8;
+}
+
+.filter-list {
+  margin: auto;
+  width: 300px;
+  background: brown;
+  border-radius: 5px;
+  border: 1px solid;
+  color: white;
+  input {
+    width: 100%;
+    display: block;
+    padding: 10px;
+    border-radius: 5px 5px 0px 0px;
+    border: 0;
+    font-size: 24px;
+    &:focus {
+      outline: none;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style-type: none;
+      margin: 0;
+      color: white;
+      padding: 10px 20px;
+      border-top: 1px solid;
+      &:hover {
+        background: #2980b9;
+      }
+    }
+  }
+}
+        </style>
+    </head>
+    <body>
+        <div id="mount-point"></div>
+        <script type="text/babel">
+           
+
+var List = React.createClass({
+  render: function(){
+    return (
+      <ul>
+      {
+        this.props.items.map(function(item) {
+          return <li key={item}>{item}</li>;
+        })
+       }
+      </ul>
+    );
+  }
+});
+
+var FilteredList = React.createClass({
+  filterList: function(event){
+    var updatedList = this.state.initialItems;
+    updatedList = updatedList.filter(function(item){
+      return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({items: updatedList});
+  },
+  getInitialState: function(){
+     return {
+       initialItems: [
+         "One",
+         "Two",
+         "Three",
+         "Four",
+         "Five",
+         "Blue",
+         "White",
+         "Grey",
+         "Black",
+         "Yellow",
+         "Red"
+       ],
+       items: []
+     };
+  },
+  componentWillMount: function(){
+    this.setState({items: this.state.initialItems});
+  },
+  render: function(){
+    return (
+      <div className="filter-list">
+        <input type="text" placeholder="Search" onChange={this.filterList}/>
+      <List items={this.state.items}/>
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(<FilteredList/>, document.getElementById('mount-point'));
+        </script>
+    </body>
+    
+</html>

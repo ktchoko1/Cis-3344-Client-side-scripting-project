@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--
+Author: Kouassi Tchokoto
+Date created: 01/25/2018
+Date last modified: 01/29/2018
+Topic: Braiding Hair Shop
+Class: CIS 4350 - Client Side Scripting for the Web
+Instructor: Sally Kyvernitis
+File Name: labs.html
+Description: This web page contains the home page and links to different pages on the web site.
+-->
+<html>
+    <head>
+        <title>Braiding Hair Shop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="myStyle.css">
+
+        <style>
+            pre {
+                background-color: #E37474;
+                border-radius: 8px;
+                box-shadow: 2px 2px 4px #888888;
+                border: 2px solid #F8F8F8;
+                padding: 0px 10px; /* top/bottom then left/right */
+                padding-top:16px;
+                margin: 0px 10px;
+                margin-right: 16px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="header">
+            <div id="pageTitle" >
+                REACT JS TUTORIAL
+            </div>
+            <div id="navLink">
+                <ul id="navList">
+                    <li id="lit"><a href="../index.html" class="navLink">Home</a></li>
+                    <li id="lit"><a href="../labs.html" class="navLink">Labs</a></li>
+                </ul>
+
+
+            </div>
+
+            <span class="stopFloat"></span>
+
+        </div>
+
+        <div id ="container">
+
+            <div class="content1">
+                <h2 id="blogTitle">ReactJS Tutorial</h2>
+
+                <div class="blog">
+                    <h2>Introduction to ReactJS</h2>
+                    <p>
+                        ReactJS is an open-source, component based front end library responsible only for view layer of the
+                        the application. It is maintained by Facebook. ReactJS uses virtual DOM based mecanism to fill in data in HTML DOM.
+                        The virtual DOM works fast owning to the fact that it only changes the individual DOM element instead of reloading complete DOM every time.
+                    </p>
+                    <p>
+                        A react application is made up multiple components, each responsible for outputting a small,reusable piece of HTML.
+                        Components can be nested within other components to allow complex application to be built out of simple building blocks.
+                        It allows you to write code in JSX which adds XML syntax to JavaScript. In this tutorial will learn some basic of reactJS as:
+                    </p>
+
+
+
+                    <ul style="display: block">
+                        <li>Components</li>
+                        <li>States in React</li>
+                        <li>Props in React</li>
+                        <li>React Components Life Cycle</li>
+                        <li>Conclusion</li>
+                    </ul>
+
+                    <span class="stopFloat"></span>
+                    <p>
+                    <h2>What is JSX?</h2>
+                    JSX is a JavaScript syntax extension that can be used with React to deﬁne tree structures with attributes.
+                    It has a familiar XML-like syntax, which makes it easy to adopt. JSX tags have tag names,
+                    attributes as well as children. If an attribute is a string value, you would simply enclose the value in 
+                    quotes. If the attribute is anything else, you would enclose the value in curly braces and it is then interpreted 
+                    as a JavaScript expression. By using a JavaScript transpiler like babel, you are able to turn the JSX code into JavaScript 
+                    that can be run in your browser. All of the HTML that you can write in the JSX is the same as normal HTML with a few exceptions.
+                    For instance, class is a reserved word in React therefore, if you would like to specify a class as a parameter in an HTML tag you 
+                    must use 'className' instead.
+                    </p>
+                </div>
+
+
+            </div>
+            <div class="content">
+                <div class="blog">
+                    <h2>Components</h2>
+                    <p>
+                        A React component can be deﬁned as an ES6 class that extends the base React.
+                        Component class. In its minimal form, a component must deﬁne a render method
+                        that speciﬁes how the component renders to the DOM. The render method returns
+                        React nodes, which can be deﬁned using JSX syntax as HTML-like tags.
+                        The following example shows how to deﬁne a minimal Component:
+
+                    </p>
+                    <pre>
+                    import React from 'react'
+                    class HelloWorld extends React.Component {
+                    render() {
+                    return <span>Hello, World!</span> }
+                       }
+                        export default HelloWorld
+
+                    </pre>
+                    <p>
+                        A Component can also receive props. These are properties passed by its parent in order to specify
+                        some values the component cannot know by itself; a property can also contain a function that can be
+                        called by the component after certain events occur - for example, a button could receive a function
+                        for its onClick property and call it whenever it is clicked. When writing a component, its props can be accessed through the props object on the Component itself:
+
+                    </p>
+                    <pre>
+                    import React from 'react'
+                    class Hello extends React.Component {    
+                    render() {        
+                    return <span>Hello, {this.props.name}!</span>} 
+                      }
+                    export default Hello
+                    </pre>
+                    <p>
+                        The example above shows how the component can render an arbitrary string passed into the name prop by its parent.
+                        Note that a component cannot modify the props it receives.
+                        A component can be rendered within any other component, or directly into the DOM if it's the top most component, using React DOM
+                    </p>
+
+                </div>
+
+                <div class="content">
+                    <div class="blog">
+                        <h2>State in ReactJS </h2>
+
+                        <p>
+                            State is the place where the data comes from. We should always try to make our state as simple as possible
+                            and minimize the number of stateful components. If we have, for example, ten components that need data from
+                            the state, we should create one container component that will keep the state for all of them. We can also define
+                            State in React components is essential to manage and communicate data in your application. 
+                            It is represented as a JavaScript object and has component level scope, it can be thought of as the private data of
+                            your component.
+                            In the example below we are deﬁning some initial state in the constructor function of our component and make use of it in the render function.    
+                        </p>
+                        <pre>
+                            class ExampleComponent extends React.Component { 
+                             constructor(props){ 
+                                  super(props);
+
+                            // Set-up our initial state    
+                            this.state = {      
+                             greeting: 'Hi Buddy!'    
+                            };  
+                            }
+                             render() {    
+                            // We can access the greeting property through this.state    
+                            return(      
+                            <span>{this.state.greeting}</span>    
+                             );  
+                            }
+                             } 
+                        </pre>
+                        <p>
+                            Every component has a state object and a props object. State is set using the setState method.
+                            Calling setState triggers UI updates. If we want to set an initial state before any interaction occurs we can use the getInitialState method.
+                            Below, see how we can set our component's state:
+                        </p>
+                        <pre>
+                        var MyComponent = React.createClass({
+                        getInitialState: function(){
+                        return {
+                        count: 5
+                        }
+                       },
+                        render: function(){
+                        return (
+                        <span>{this.state.count}</span>
+                        )
+                       }
+                      });
+                        </pre>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="blog">
+                        <h2>Props in ReactJS</h2>
+
+                        <p>
+                            When we use our defined components, we can add attributes called props. These attributes are available
+                            in our component as this.props and can be used in our render method to render dynamic data:  
+
+                        </p>
+                        <pre>
+                        var MyComponent = React.createClass({
+                         render: function(){
+                         return (
+                         <Span>Hello, {this.props.name}!</Span>
+                        );
+                         }
+                         });
+
+                    React.render(<MyComponent name="name" />, document.getElementById('#Id'));
+                        </pre>
+
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="blog">
+                        <h2>Components life Cycle</h2>
+
+                        <p>
+                            Here are some lifecycle methods in React you should know: 
+                        </p>
+                        <ol>
+                            <li>
+                                componentWillMount - Invoked once, on both client & server before rendering occurs.  
+                            </li>
+                            <li>
+                                componentDidMount - Invoked once, only on the client, after rendering occurs.  
+                            </li>
+                            <li>
+                                shouldComponentUpdate - Return value determines whether component should update. 
+                            </li>
+                            <li>
+                                componentWillUnmount - Invoked prior to unmounting component.
+                            </li>
+                        </ol>
+                        <p>
+                            There are several more lifecycle methods that you can read about 
+                            <a href="https://reactjs.org/docs/react-component.html">Here</a>.
+                        </p>
+                        <pre>
+                           
+            var Box = React.createClass({
+                componentWillMount() {
+                    alert('Component is about to mount');
+                },
+                componentDidMount() {
+                    alert('Component just mounted');
+                },
+                render() {
+                    return <span id='myDiv'></span>;
+                }
+            });
+            ReactDOM.render(<Box />, 
+                document.getElementById('react-container'));
+
+            var getRidOfBox = document.getElementById('myDiv');
+            getRidOfBox.onclick = function() {
+                ReactDOM.unmountComponentAtNode(
+                    document.getElementById('react-container'));
+                    alert('component is unmounted');
+            };
+        
+                        </pre>
+                        <p>
+                            This example above is taken from a tutorial on www.lynda.com specifically on <a href="https://www.lynda.com/React-js-tutorials/Using-properties/645064/692544-4.html?autoplay=true">Click here.</a>
+                            It demonstrate the use of componentWillMont and componenentDidMount.<a href="life.html">click to see the effect</a>
+                        </p>
+
+
+
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="blog">
+                        <h2>Conclusion</h2>
+
+                        <p>
+                            Now that we have reviewed some React basics,You can farther your knowledge by visiting <a href="https://reactjs.org/docs/try-react.html">Click Here</a>
+                            where you will learn all about the installation's requirements needed to start using ReactJs.
+                            All the component studied above have been put together to create a simple search form for demonstration purpose.
+                            see the code bellow:
+                        </p>
+
+                        <pre>
+                            var FilteredList = React.createClass({
+  filterList: function(event){
+    var updatedList = this.state.initialItems;
+    updatedList = updatedList.filter(function(item){
+      return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({items: updatedList});
+  },
+  getInitialState: function(){
+     return {
+       initialItems: [
+         "One",
+         "Two",
+         "Three",
+         "Four",
+         "Five",
+         "Blue",
+         "White",
+         "Grey",
+         "Black",
+         "Yellow",
+         "Red"
+       ],
+       items: []
+     };
+  },
+  componentWillMount: function(){
+    this.setState({items: this.state.initialItems});
+  },
+  render: function(){
+    return (
+      < className="filter-list">
+        < type="text" placeholder="Search" onChange={
+        this.filterList}/>
+      < items={this.state.items}/>
+      
+    );
+  }
+});
+
+ReactDOM.render(<FilteredList/>, document.getElementById('mount-point'));
+                        </pre>
+                        <p>
+                            The demo of the code can be seen <a href="demo.html">Here</a> This tutorial is made possible 
+                            through the help of <a href="https://www.tutorialspoint.com/reactjs/index.htm">Tutorialspoint</a>, <a href="https://www.lynda.com/React-js-tutorials/Using-properties/645064/692544-4.html?autoplay=true">Lynda.com</a>,and 
+                            <a href="https://reactjs.org/docs/try-react.html">ReactJS.org</a>
+                        </p>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+        <div id="footer">
+            Kouassi Tchokoto
+        </div>
+    </body>
+</html>

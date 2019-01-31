@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<!--
+Author: Kouassi Tchokoto
+Date created: 02/05/2018
+Date last modified: 02/05/2018
+Topic: Braiding Hair Shop
+Class: CIS 4350 - Client Side Scripting for the Web
+Instructor: Sally Kyvernitis
+File Name: 02_advLayout/index.html
+Description: This web page contains the home page and links to different pages on the web site.
+-->
+<html>
+    <head>
+        <title>Braiding Shop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <style>
+            html, body {
+
+                margin:0;
+                padding:0;
+            }
+            body {
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                background-color: rgb(160, 200, 180);
+            }
+
+            #titleNav {
+                z-index: 2;
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                color: white;
+                font-family: serif;
+                background-color:#5D0000;
+                height: 60px;
+                box-shadow: 5px 5px 5px #E37474;
+                margin-right: 15px;
+                margin-bottom: 15px;
+                min-width: 600px;  
+            }
+            #title {
+                padding-top: 0px;
+                padding-left: 10px;
+                font-size: 45px;
+                font-weight: bold;
+                letter-spacing: 1.5px;
+                text-align: center;
+                float: left;
+
+            }
+            #nav {
+                position:fixed;
+                top:0px;
+                right:0px;
+                z-index:2;
+                font-size:22px;
+                letter-spacing: 1px;
+                font-weight:bold;
+                text-align:center;
+
+            }
+            #navGroup {
+                display: none;
+
+            }
+            #navIcon {
+                padding-top: 5px;
+                margin-right: 5px;
+                width:100%;
+                box-sizing: border-box;
+                display: block;
+            }
+            .navLink {
+                width:100px;
+                padding: 4px;
+                display: block;
+                box-sizing: border-box;
+
+            }
+
+            a {
+                text-decoration: none;
+                color: white;
+            }
+            a:hover{
+                background-color: #E37474;
+            }
+            .stopFloat {
+                clear:both;
+            }
+            #content {
+                margin:0px;
+                padding: 0px;
+            }
+            #footer {
+                z-index: 2;
+                width: 100%;
+                position: fixed;
+                bottom: 0px;
+                left: 0px;
+                color: brown;
+                clear: both;
+                text-align: center;
+                font-size: 15px;
+                letter-spacing: 0.75px;
+                background-color:#5D0000;
+            }
+
+
+            /* Desktop Only Styles  */
+
+            @media screen and (min-width: 580px) {
+
+                #title { 
+                    font-size:36px;
+                    padding-top: 18px;
+
+                }
+                .navLink{
+                    display:inline;
+                    border:none;
+                    border-right: thin solid gray;
+                }
+                #navGroup {
+                    display:block;
+                    padding-top: 29px;
+                }
+                #navIcon {
+                    display:none;
+                }
+            }
+
+
+            .blog{
+                padding: 10px;
+                background-color: #E3E3F9;
+            }
+            .blog h3 {
+                margin: 15px;
+            }
+
+            .blog a {
+                text-decoration: none;
+                color: brown;
+            }
+
+            .blog a:hover {
+                color: #7171FF;
+                text-decoration: underline;
+            }
+            #blogTitle{
+                color: brown;
+                font-weight: bold;
+                font-size: 35px;
+                font-family: sans-serif;
+                text-align: center;
+            }
+
+            #page1 {
+                background-image: url('pics2/page1.JPG');
+                width: 100%;
+                height: auto;
+
+            }
+
+
+            div.transbox p {
+                margin: 5%;
+                font-weight: bold;
+                color: #000000;
+                color: plum;
+
+            }
+            #page2 {
+                background-color: lightyellow;
+            }
+            #page3 {
+                background-color: violet;
+            }
+
+            .sng-page {
+                min-height: 500px; 
+                min-height: 100vh;
+                border-bottom: 1px solid rgba(0,0,0,0);
+                border-top: 1px solid rgba(0,0,0,0);
+            }
+
+            /* page 2 css mobile design*/
+            .topBottomCommon {
+                background-image: url('pics2/page2.jpg');
+                color: white;
+                font-family: Roboto, helvetica, arial, sans-serif;
+                height: 170px;
+                margin: 0px;
+                padding: 0px;
+
+
+            }
+
+            .headSection {
+                padding: 2.2em;
+                color: white;
+                font-family: Roboto, helvetica, arial, sans-serif;
+            }
+
+            .headSection h1 {
+                font-weight: 400;
+                font-size: 60px;
+                line-height: 1em;
+                margin-bottom: 10px;
+            }
+
+            .subHeadline {
+                font-size:17px;
+                padding:0.65em;
+
+            }
+
+
+            .section {
+                box-sizing: border-box;                                
+                padding: 20px;
+                color: black;
+                background-color:white;
+                text-align: center;
+            }
+
+
+            #section2 {
+                color: white;
+                background-color: #E37474;
+            }
+
+            .section h2  {
+                font-size: 24px;
+                font-weight: 300;
+                text-align: center;
+                margin-bottom: 0px;
+                margin-top: 20px;
+            }
+
+
+
+            .imageContainer {
+                width: 100%;
+                padding-left: 2%;
+                padding-right: 4%;
+                padding-bottom: 24px;
+                box-sizing: border-box;
+
+            }
+            .imageContainer img {
+                width: 100%;
+                box-sizing: border-box;
+                border-radius: 2%;
+                box-shadow: black 0px 0px 5px;
+                margin: 1%;
+                margin-bottom:8px;
+
+            }
+            /* page2 desktop*/
+            @media screen and (min-width: 600px) {
+
+                .container {
+                    margin:auto;
+                    max-width: 1000px;
+                }
+
+                .left {
+                    float: left;
+                    width:49%;
+                    margin-right: 1%;
+
+                }
+
+                .right {
+                    float:right;
+                    width:49%;
+                    margin-left: 1%;
+                }
+
+                .clear{
+                    clear: both;
+                }
+
+                .imageContainer {
+                    width: 33%;
+                    float:left;
+                }
+                .imageContainer img {
+                    border-radius: 50%;
+                }
+
+            }
+            /* form css*/
+
+            
+
+            #register {
+                background-color: #5D0000;;
+                padding: 1em;
+                border-radius: 2px;
+            }
+
+            #register h2 {
+                font-size: 30px;
+                margin-top: 5px;
+                font-weight: 100;
+                padding: 0;
+                margin: 0;
+            }
+
+            #register label {
+                font-size: 1.2em;
+                padding-top: 12px;
+                display: block;
+            }
+
+            #register input {
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                border: none;
+                border-radius: 4px;
+            }
+
+            #register input[type=submit] {
+                background-color: orange;
+                color: white;
+                margin-top: 20px;
+                padding: 10px;
+                border: none;
+                box-sizing: border-box;
+            }
+
+
+        </style>
+
+    </head>
+    <body onresize="resize()">
+        <div  id="container">
+            <div id="titleNav">
+                <div id="title">
+                    Braiding Shop
+                </div>
+                <div id="nav">
+                    <div id="navIcon" onclick="iconClicked()">
+                        <img src="pics2/menuIconWhite.png" alt="" width="43"/>
+                    </div>
+                    <div id="navGroup">
+                        <div class="navLink"><a href="#page1">Home</a></div>
+                        <div class="navLink"><a href="#page2">Info</a></div>
+                        <div class="navLink"><a href="#page3">Form</a></div>
+                        <div class="navLink"><a href="../labs.html">Labs</a></div>
+                        
+                    </div>
+                </div>  <!--  end of nav -->
+            </div>  <!--  end of titleNav -->
+
+
+
+            <div id="content">
+
+                <!-- Page 1 -->
+                <div id="page1" class="sng-page" >
+
+
+
+
+                </div>
+
+                <!-- Page 2 -->
+
+                <div id="page2" class="sng-page">
+
+                    <div class="headSection topBottomCommon">
+                        <div class="container">
+
+
+                        </div> <!-- end container -->
+                    </div> <!-- end section -->
+
+                    <div class = "section" id="section2">
+                        <div class="container">
+                            <h1>Alvi Braid Collection</h1>
+                            <p>Make your command today!</p>
+                            <div class="imageGroup">
+                                <div class="imageContainer">
+                                    <img src="pics2/shop4.png" alt="collestion 1">
+                                    <br>Mawa Style
+                                </div>
+                                <div class="imageContainer">
+                                    <img src="pics2/shop6.png" alt="Collection 2">
+                                    <br>Aliou Style
+                                </div>
+                                <div class="imageContainer">
+                                    <img src="pics2/shop5.png" alt="Collection 3">
+                                    <br> Ens Style
+                                </div>
+                                <div class="clear"></div>
+                            </div> <!-- image group -->
+                            <br>
+                        </div> <!-- end container -->
+
+                    </div> <!-- end section -->
+
+
+
+
+                </div>
+
+                <!-- Page 3 -->
+                <div id="page3" class="sng-page">
+
+                    <div class="headSection topBottom">
+                        <div class="container">
+                            <h1>Alvi Braids & Accessories</h1>
+                            <div class="subHeadline">Giving you Divine Look!</div>
+                            <div class="left">
+                                <h2 style="margin-left:-15px;">Contact Us</h2>
+
+
+                                <form method="post" action="http://www.temple.edu/cgi-bin/mail?sallyk@temple.edu">    
+
+
+
+                                    What is Your Name?   <input type="text" name="userName" placeholder="plain text input"/>  <br/> 
+                                    What is your Sex?      <input type="radio" name="userSex" value="M"  />   Male    
+                                    <input type="radio" name="userSex"  value="F"  />    Female  <br/> 
+                                    Are you Alvi customer? <input type="checkbox" name="isCisMajor"  />  <br/> 
+                                    What is your concern?
+                                    <select name="collegeClass" >
+                                        <option value="Guess" >Guess</option>
+                                        <option value="customer">Customer</option>
+                                        <option value="NaS">Other</option>
+                                    </select>     <br/> <br/>
+                                    Comments or Suggestions? <br/>
+                                    <textarea name="inputcomments" cols="20" rows="5" placeholder="type here!"></textarea> <br/> <br/>
+                                    <input type="submit" value=" Submit" style="background-color:brown; color: white;"/>
+                                </form>
+                            </div>
+                            <div class="right">
+                                <br/>
+
+                                <form method="post" id="register" action="http://www.temple.edu/cgi-bin/mail?sallyk@temple.edu">
+                                    <h2>Appointment Form</h2>
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name"
+                                           placeholder="Alvi Braids" required>
+                                    <label for="email">Email address</label>
+                                    <input type="email" name="email" id="email"
+                                           placeholder="exam@example.com" required>
+                                    <label for="tel">Telephone</label>
+                                    <input type="tel" name="tel" id="tel"
+                                           placeholder="(267) 207 5762" required>
+
+                                    <br/> <br/>
+                                    Leave you message <br/>
+                                    <textarea name="inputcomments" cols="20" rows="5" placeholder="type here!" ></textarea>
+                                    <input type="submit" value="Submit">
+                                </form>
+
+                            </div>
+                            <br>
+                            <div class="clear"></div>
+                        </div> <!-- end container -->
+                    </div> <!-- end section -->
+                </div>
+                <span class="stopFloat"></span>
+            </div>
+
+
+        </div>
+        <div>
+            <div id="footer">
+                Kouassi Tchokoto
+            </div>
+        </div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+
+                        // Wait until all elements exist on the page before trying to reference anything ...
+                        $(document).ready(function () {
+
+                            // $('a[href^="#"]') --> thia selector applies to all <a> elements with a href attribute that starts with "#".
+                            //    Learned this from   http://www.w3schools.com/jquery/jquery_ref_selectors.asp
+                            $('a[href^="#"]').click(function () {
+
+                                // "this" means the element involved in the event, so, the link that was clicked.
+                                console.log("this");
+                                console.log(this); // if you console.log an object, you'll see nice tree view
+                                // of the object's properties in the console (F12 from Chrome)
+                                console.log("-");
+
+                                // ".hash" refers to the href attribute of the <a> tag. So, if <a href="#page1">
+                                // was clicked, then "this.hash" has this value: "#page1"
+                                console.log("this.hash");
+                                console.log(this.hash);
+                                console.log("-");
+
+                                // $ is a jQuery function which returns a jQuery object that references the
+                                // specified HTML element. For example, $("#content") returns a jQuery
+                                // object that references the HTML element with id="content". This object also has
+                                // loads of contextual information (e.g., parent, siblings, and many other properties.
+
+                                // So, variable "target" references a jQuery object that the user clicked.
+                                var target = $(this.hash);
+                                console.log("$(this.hash)");
+                                console.log(target);
+                                console.log("-");
+
+                                // This if statement will run if target.length exists.
+                                if (target.length) {
+
+                                    // animate is a jQuery function (what_to_do, how_fast_in_millisecs).
+                                    // "what_to_do" is an object with any number of CSS property/value pairs:
+                                    /*
+                                     * $("button").click(function(){
+                                     $("div").animate({
+                                     left: '250px',
+                                     opacity: '0.5',
+                                     height: '150px'
+                                     },500);
+                                     });
+                                     */
+                                    //
+                                    // scrollTop is a javaScript property of any DOM element.
+                                    // It measures the number of pixels from the DOM element to the top of
+                                    // of the DOM element's scrollable parent element.
+                                    //           see http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_scrollleft
+                                    //
+                                    // .offset() is a function (of any jQuery object) that returns an object with
+                                    // top and left properties (top/left relative to the document).
+
+                                    $('html, body').animate({
+                                        // set the scrollTop property (of the browser)
+                                        // to be the top attribute of the element being linked to
+                                        scrollTop: target.offset().top
+                                    }, 900);  // but do it a bit slow (900 millisecs)
+                                }
+
+                            });
+
+                        });
+        </script>
+        <!-- Jquery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+
+                        // Wait until all elements exist on the page before trying to reference anything ...
+                        $(document).ready(function () {
+
+                            $("img").mouseenter(function () {
+                                $(this).animate({
+                                    opacity: '15',
+                                    fontSize: '50em'
+                                });
+                            });
+
+
+                            $("img").mouseleave(function () {
+                                $(this).animate({
+                                    opacity: '0.85',
+                                    fontSize: '50em'
+                                });
+                            });
+                        });
+        </script>
+        <!-- Jquery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+
+                        // Wait until all elements exist on the page before trying to reference anything ...
+                        $(document).ready(function () {
+
+                            $("h1").mouseenter(function () {
+                                $(this).animate({
+                                    opacity: '1',
+                                    fontSize: '3em'
+                                });
+                            });
+
+
+                            $("h1").mouseleave(function () {
+                                $(this).animate({
+                                    opacity: '0.85',
+                                    fontSize: '2em'
+                                });
+                            });
+                        });
+        </script>
+
+        <script>
+
+            // returns a reference to the HTML element with the given id
+            function my$(id) {
+                return document.getElementById(id);
+            }
+
+            // This function is invoked whenever the navIcon is clicked -- because of the
+            // <div id="navIcon" onclick="iconClicked()"> tag in the HTML.
+            function iconClicked() {
+                var navGroup = my$("navList");
+                var navDisplay = getComputedStyle(navList).display;
+                if (navDisplay === "block") {
+                    my$("navList").style.display = "none";
+                } else {
+                    my$("navList").style.display = "block";
+                }
+                console.log("icon Clicked. navList is " + my$("navList").style.display);
+            }
+
+
+            // Global declarations **************************************************
+            var navIcon = my$("navIcon"); // reference to the "navIcon" div
+
+            // This is the initial display attribute (block or none) - depends on the
+            // size of browser at page refresh time.
+            // I had to use getComputedStyle (per internet search) rather than just
+            // navIcon.style.display because the initial setting is set by CSS not javaScript.
+            var iconDisplay = getComputedStyle(navIcon).display;
+            console.log("initial iconDisplay is " + iconDisplay);
+
+            // We want to have certain behavior when the browser first "gets small"
+            // (converts to mobile layout) and when the browser first "gets big"
+            // (converts to desktop layout). So we have to track the previous value
+            // as well as the current value.
+            var previousIconDisplay = iconDisplay;
+            // End of Global declarations **************************************************
+
+
+            // This function is invoked whenever the browser is resized -- because of the
+            // <body> tag in the HTML: <body onresize="resize()">
+            function resize() {
+                previousIconDisplay = iconDisplay;
+                iconDisplay = getComputedStyle(navIcon).display;
+                console.log("resized. iconDisplay is " + iconDisplay);
+
+                if (iconDisplay === "none" && previousIconDisplay === "block") {
+                    console.log("sized big - show nav list");
+                    my$("navList").style.display = "block";
+
+                }
+                if (iconDisplay === "block" && previousIconDisplay === "none") {
+                    console.log("sized small - hide nav list");
+                    my$("navList").style.display = "none";
+                }
+            }
+
+        </script>
+
+
+        <script>
+
+            // returns a reference to the HTML element with the given id
+            function my$(id) {
+                return document.getElementById(id);
+            }
+
+            // This function is invoked whenever the navIcon is clicked -- because of the
+            // <div id="navIcon" onclick="iconClicked()"> tag in the HTML.
+            function iconClicked() {
+                var navGroup = my$("navGroup");
+                var navDisplay = getComputedStyle(navGroup).display;
+                if (navDisplay === "block") {
+                    my$("navGroup").style.display = "none";
+                } else {
+                    my$("navGroup").style.display = "block";
+                }
+                console.log("icon Clicked. navGroup is " + my$("navGroup").style.display);
+            }
+
+
+            // Global declarations **************************************************
+            var navIcon = my$("navIcon"); // reference to the "navIcon" div
+
+            // This is the initial display attribute (block or none) - depends on the
+            // size of browser at page refresh time.
+            // I had to use getComputedStyle (per internet search) rather than just
+            // navIcon.style.display because the initial setting is set by CSS not javaScript.
+            var iconDisplay = getComputedStyle(navIcon).display;
+            console.log("initial iconDisplay is " + iconDisplay);
+
+            // We want to have certain behavior when the browser first "gets small"
+            // (converts to mobile layout) and when the browser first "gets big"
+            // (converts to desktop layout). So we have to track the previous value
+            // as well as the current value.
+            var previousIconDisplay = iconDisplay;
+            // End of Global declarations **************************************************
+
+
+            // This function is invoked whenever the browser is resized -- because of the
+            // <body> tag in the HTML: <body onresize="resize()">
+            function resize() {
+                previousIconDisplay = iconDisplay;
+                iconDisplay = getComputedStyle(navIcon).display;
+                console.log("resized. iconDisplay is " + iconDisplay);
+
+                if (iconDisplay === "none" && previousIconDisplay === "block") {
+                    console.log("sized big - show nav group");
+                    my$("navGroup").style.display = "block";
+
+                }
+                if (iconDisplay === "block" && previousIconDisplay === "none") {
+                    console.log("sized small - hide nav group");
+                    my$("navGroup").style.display = "none";
+                }
+            }
+
+        </script>
+    </body>
+</html>

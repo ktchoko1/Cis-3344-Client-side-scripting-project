@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Insert Products</title>
+        <link href="styles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body ng-app="app">
+
+        <div id='titleNav'>
+            <div id='title'>ALVI BRAIDS</div>
+            <div id='nav'>
+                <div class='navLink'><a href='index.html'>Home</a></div>
+                <div class='navLink'><a href='insert.html'>Insert</a></div>
+            </div>
+        </div>
+        <div style='clear:both'></div>
+
+        <div id='contentArea' ng-controller="contentController"> 
+            <h2>Insert Products</h2>
+
+            <table>
+                <tr>
+                    <td class="fieldName">Description</td>
+                    <td><input type="text" id="productDesc"></td>
+                    <td class="fieldError" id="productDescError"></td>
+                </tr>
+                <tr>
+                    <td class="fieldName">Price</td>
+                    <td><input type="text" id="retailPrice"></td>
+                    <td class="fieldError" id="retailPriceError"></td>
+                </tr>
+                <tr>
+                    <td class="fieldName">Materials</td>
+                    <td><input type="text" id="productMaterial"></td>
+                    <td class="fieldError" id="productMaterialError"></td>
+                </tr>
+                <tr>
+                    <td class="fieldName">Image Link</td>
+                    <td><input type="text" id="imageName"></td>
+                    <td class="fieldError" id="imageNameError"></td>
+                </tr>
+               
+                
+            </table>
+
+            <p>
+                <input type="button" value="Insert Save" onclick="insertSave()">
+            </p>
+
+            <p id="formMsg">
+            </p>
+
+            <p>
+                <a href="index.html">back to list</a>
+            </p>
+            
+            <script src="js/ajaxFw.js"></script>
+            <script>
+
+                            function my$(ele) {
+                                return document.getElementById(ele);
+                            }
+                            function insertSave() {
+                                var newproduct = {
+                                    productDesc: my$("productDesc").value,
+                                    retailPrice: my$("retailPrice").value,
+                                    productMaterial: my$("productMaterial").value,
+                                    imageName: my$("imageName").value
+                                };
+
+                                // JSON.stringify is implemented by the browser (not my code).
+                                var productJSON = JSON.stringify(newproduct);
+                                productJSON = escape(productJSON);
+                                ajaxCall("webAPIs/productInsert.jsp?jsonData=" + productJSON,
+                                        function (response) { // success function
+                                            // write the field level validation messages on the page
+                                            my$("productDescError").innerHTML = response.productDesc;
+                                            my$("retailPriceError").innerHTML = response.retailPrice;
+                                            my$("productMaterialError").innerHTML = response.productMaterial;
+                                            my$("imageNameError").innerHTML = response.imageName;
+                                            my$("formMsg").innerHTML = response.errorMsg;
+                                            if (response.errorMsg.length === 0) { // empty string meant success
+                                                my$("formMsg").innerHTML = "Product inserted !";
+                                            }
+                                        },
+                                        function (error) {
+                                            my$("formMsg").innerHTML = error;
+                                        });
+
+                            }
+            </script>
+        </div>
+
+    </body>
+</html>

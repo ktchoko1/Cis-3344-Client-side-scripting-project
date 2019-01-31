@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Using the latest recommended URLs for Angular 1 (Spring 2017) -->
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+        <link href="styles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body ng-app="demoApp">
+        
+
+        <div id='titleNav'>
+            <div id='title'>Angular</div>
+            <div id='nav'>
+                <div class='navLink'><a href='#list'>List</a></div>
+                <div class='navLink'><a href='#insert'>Insert</a></div>
+                <div class='navLink'><a href='#logon'>Logon</a></div>
+                <div class='navLink'><a href='#logoff'>Logoff</a></div>
+                <div class='navLink'><a href='#member'>Member</a></div>
+                <div class='navLink'><a href='../labs.html'>Labs</a></div> 
+            </div>
+        </div>
+        <div style='clear:both'></div>
+
+        <div id='contentArea'> 
+            <div ng-view="" > </div>
+        </div>
+        <script src='js/product_app.js'></script>
+        <script src='js/logon.js'></script>
+        <script src='js/logoff.js'></script>
+         <script src='js/member.js'></script>
+        
+        <script src='js/product_route.js'></script>
+        <script src='js/product_list_controller.js'></script>
+        <script src='js/product_detail_controller.js'></script>
+        <script src='js/product_insert_controller.js'></script>
+
+    </body>
+</html>

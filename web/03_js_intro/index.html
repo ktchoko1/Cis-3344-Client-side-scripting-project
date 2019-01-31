@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+
+            html, body {
+                margin:0; 
+                padding:0; 
+            }
+            body {
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; 
+                background-color:#FAF1E8;
+                font-size:16px;
+                min-width: 600px;
+            }
+            #titleNav {
+                font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                color:black;
+                height: 100px;
+                min-width:600px; 
+                background-color: brown;
+               
+            }
+            #pageTitle { 
+                padding-left:10px;
+                font-size:65px;
+                font-weight:bold;
+                text-align:center;
+                float:left;
+                color: white;
+            }
+            #nav {
+                margin-right:2%;
+                float:right;
+            }
+            #nav a {
+                text-decoration:none; 
+                color: white; 
+            }
+            #nav div {
+                margin-top:3px;
+                float:left;
+                font-size:18px;
+                padding: 6px;
+                padding-top:34px;
+                height: 33px;
+                text-align:center;
+                font-weight:bold;
+            }
+            #nav div:hover {
+                background-size: 35px;
+                background-position: top center;
+                background-repeat: no-repeat;
+            }
+            #nav div:hover a {
+                color: black;
+            }
+            #content {
+                padding-left:2%;	
+                padding-right:2%;	
+                padding-bottom: 20px; 
+            }
+            #footer {
+                position: fixed;
+                bottom:0px;
+              
+                width:100%;
+                color:white;
+                clear:both;
+                text-align:center;
+                padding:5px;
+                margin-top: 10px;
+                background-color: brown
+            }
+            #hairDiv {
+                background-color: white;
+                margin-bottom: 5px;
+                margin-top: 5px;
+                width: 30%;
+                padding-left: 10px
+            }
+            input, button {
+                border-radius: 2px;
+            
+                
+        </style>
+
+    </head>
+    <body>
+      
+        <div id="titleNav">
+            <div id="pageTitle">
+                Hair Braiding Shop
+            </div>
+
+            <div id="nav">
+                <div><a href="../index.html">Home</a></div>
+                <div><a href="../labs.html">Labs</a></div>
+            </div>  
+
+            
+        </div>
+        <h2 style="color:brown;">Alvi Style List</h2>
+
+        <input type="button" onclick="sortByName()" value="Name Sort">
+        <input type="button" onclick="sortByCol()" value="Coller Sort">
+        <input type="button" onclick="sortByPrice()" value="Price Sort">
+        <div id="hairDiv"></div>
+
+        which Hair?<input type="text" id="whichObject"><br>
+        
+        <button onclick="updateName()">Edit Name</button><input type="text" id="nameTextBox"><br>
+        <button onclick="updateCol()">Edit Color</button><input type="text" id="colTextBox"><br>
+        <button onclick="updatePrice()">Edit Price</button><input type="text" id="priceTextBox"><br>
+        
+        
+        <button onclick="addNewHair()">Add New Style</button><input type="text" id="newHairTextBox"><input type="text" id="colTextBox2"><input type="text" id="newHairTextBox2"><br>
+       
+
+        <div id="message"></div>
+
+        <div id = "footer">
+            Kouassi Tchokoto
+        </div>
+
+        <script src="listObject.js"></script>
+        <script src="sort.js"></script>
+
+        <script>
+
+            "use strict";
+                 debugger;
+            function updateName() {
+                var which = Number(document.getElementById("whichObject").value);
+                if (isNaN(which) || (which < 0) || (which > hairList.length)) {
+                    document.getElementById("message").innerHTML = "Invalid Hair,starts at 0";
+                    return;
+                } else {
+                    var hairName = document.getElementById("nameTextBox").value;
+                    hairList[which].setName(hairName);
+                    document.getElementById("message").innerHTML = "Hair " + which + " - name updated.";
+                    updateHairList();
+                }
+            }
+            
+            
+             function updateCol(){
+                var which = Number(document.getElementById("whichObject").value);
+                if (isNaN(which) || (which < 0) || (which > hairList.length)) {
+                    document.getElementById("message").innerHTML = "Invalid Hair,starts at 0";
+                    return;
+                } else {
+                    var hairCol = document.getElementById("colTextBox").value;
+                    hairList[which].setCol(hairCol);
+                    document.getElementById("message").innerHTML = "Hair " + which + " - color updated.";
+                    updateHairList();
+                }
+            }
+
+           
+           
+            function updatePrice() {
+                var which = Number(document.getElementById("whichObject").value);
+                if (isNaN(which) || (which < 0) || (which > hairList.length)) {
+                    document.getElementById("message").innerHTML = "Invalid Hair,starts at 0";
+                    return;
+                } else {
+                    var hairPrice = document.getElementById("priceTextBox").value;
+                    hairList[which].setPrice(hairPrice);
+                    document.getElementById("message").innerHTML = "Hair " + which + " - Price modified.";
+                    updateHairList();
+                }
+            }
+
+            function addNewHair() {
+                var hairName = document.getElementById("newHairTextBox").value;
+                var hairCol = document.getElementById("colTextBox2").value;
+                var hairPrice = Number(document.getElementById("newHairTextBox2").value);
+                if(hairName.length === 0 || hairCol.length === 0 || hairPrice === 0 ){
+                    document.getElementById("message").innerHTML = "filed up all the field";
+                    return;
+                }else{
+                    hairList.add(hairName,hairCol, hairPrice);
+                document.getElementById("message").innerHTML = "New hair (" + (hairList.length - 1) + ") " + name + " added.";
+                updateHairList();
+                }   
+            }
+            
+           
+            function updateHairList() {
+                document.getElementById("hairDiv").innerHTML = hairList.showList();
+            }
+
+            function sortByName() {
+                console.log("to sort by name");
+                sortByKey(hairList, "name");
+                updateHairList();
+            }
+            
+            function sortByCol() {
+                console.log("to sort by col");
+                sortByKey(hairList, "col");
+                updateHairList();
+            }
+
+            
+
+            function sortByPrice() {
+                console.log("to sort by price");
+                sortByKey(hairList, "price");
+                updateHairList();
+            }
+
+            // Main program
+            var hairList = makeHairList();
+            hairList.add("Twist","Blue", 12);
+            hairList.add("Kinkt","Yellow", 7);
+            hairList.add("Marley","Brown", 11);
+            hairList.add("Cowrows","Red", 5);
+           
+
+            document.getElementById("hairDiv").innerHTML = hairList.showList();
+
+        </script>
+
+    </body></html>
+
+
+

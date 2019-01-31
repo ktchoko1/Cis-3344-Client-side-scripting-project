@@ -1,0 +1,88 @@
+
+            html, body {
+                margin:0; 
+                padding:0; 
+            }
+            body {
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; 
+                background-color:#FAF2E8;
+                font-size:16px;
+                min-width: 600px;
+            }
+            #titleNav {
+                font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                color:black;
+                height: 100px;
+                min-width:600px; 
+                background-color: brown;
+                
+               
+            }
+            #pageTitle { 
+                padding-left:10px;
+                font-size:65px;
+                font-weight:bold;
+                text-align:center;
+                float:left;
+                color: white;
+            }
+            #nav {
+                margin-right:2%;
+                float:right;
+            }
+            #nav a {
+                text-decoration:none; 
+                color: white; 
+            }
+            #nav div {
+                margin-top:3px;
+                float:left;
+                font-size:18px;
+                padding: 6px;
+                padding-top:34px;
+                height: 33px;
+                text-align:center;
+                font-weight:bold;
+            }
+            #nav div:hover {
+                background-size: 35px;
+                background-position: top center;
+                background-repeat: no-repeat;
+            }
+            #nav div:hover a {
+                color: black;
+            }
+            #content {
+                padding-left:2%;	
+                padding-right:2%;	
+                padding-bottom: 10px;
+                margin: 15px;
+            }
+            #footer {
+                position: fixed;
+                bottom:0px;
+                width:100%;
+                color:white;
+                clear:both;
+                text-align:center;
+                padding:5px;
+                margin-top: 5px;
+                background-color: brown
+            }
+            #hairDiv {
+                background-color: white;
+                margin-bottom: 5px;
+                margin-top: 5px;
+                width: 30%;
+                padding-left: 10px
+            }
+            input, button {
+                border-radius: 2px;
+            }
+             .hairClass {
+                background-color:#f4eb41;
+                margin: 0.5em;
+                padding: 0.5em;
+                width: 250px;
+                border-radius: 15px;
+            }

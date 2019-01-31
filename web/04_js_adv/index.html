@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="mystyle.css">      
+    </head>
+    <div id="titleNav">
+            <div id="pageTitle">
+                Hair Braiding Shop
+            </div>
+
+            <div id="nav">
+                <div><a href="../index.html">Home</a></div>
+                <div><a href="../labs.html">Labs</a></div>
+            </div>  
+
+            
+        </div>
+
+        <div id="content">
+            <div id="container1">
+                <h2 style="color: brown;">Alvi Style List</h2>
+
+                <input type="button" onclick="sortByName()" value="Name Sort">
+                <input type="button" onclick="sortByCol()" value="Coller Sort">
+                <input type="button" onclick="sortByPrice()" value="Price Sort">
+
+                <div id="hairListDiv"></div>
+
+                which Hair?&nbsp;<input type="text" id="whichObject"><br>
+
+                <button onclick="updateName()">Edit Name</button>&nbsp;<input type="text" id="nameTextBox"><br>
+                <button onclick="updateCol()">Edit Color</button>&nbsp;<input type="text" id="colTextBox"><br>
+                <button onclick="updatePrice()">Edit Price</button>&nbsp;<input type="text" id="priceTextBox"><br>
+                <button onclick="addNewHair()">Add New Style</button>&nbsp;<input type="text" id="newHairTextBox">&nbsp;<input type="text" id="colTextBox2">&nbsp;<input type="text" id="newHairTextBox2"><br>
+
+                <button onclick="writeHair()">Write List to Cookie</button> &nbsp;
+                <button onclick="readHair()">Read List from Cookie</button> &nbsp;
+                <button onClick="alert('cookie is: ' + document.cookie);">Show Entire Cookie</button>
+                <br/><br/>
+
+                <div id="message"></div>
+            </div>
+
+            <script src="listObject2.js"></script>
+            <script src="sort.js"></script>
+            <script src="cookie.js"></script>
+
+            <script>
+
+                    "use strict";
+                    debugger;
+                    function updateName() {
+                        var which = Number(document.getElementById("whichObject").value);
+                        if (isNaN(which) || (which < 0) || (which > hairList.length)) {
+                            document.getElementById("message").innerHTML = "Invalid Hair,starts at 0";
+                            return;
+                        } else {
+                            var hairName = document.getElementById("nameTextBox").value;
+                            hairList[which].setName(hairName);
+                            document.getElementById("message").innerHTML = "Hair " + which + " - name updated.";
+                            updateHairList();
+                        }
+                    }
+
+
+                    function updateCol() {
+                        var which = Number(document.getElementById("whichObject").value);
+                        if (isNaN(which) || (which < 0) || (which > hairList.length)) {
+                            document.getElementById("message").innerHTML = "Invalid Hair,starts at 0";
+                            return;
+                        } else {
+                            var hairCol = document.getElementById("colTextBox").value;
+                            hairList[which].setCol(hairCol);
+                            document.getElementById("message").innerHTML = "Hair " + which + " - color updated.";
+                            updateHairList();
+                        }
+                    }
+
+
+
+                    function updatePrice() {
+                        var which = Number(document.getElementById("whichObject").value);
+                        if (isNaN(which) || (which < 0) || (which > hairList.length)) {
+                            document.getElementById("message").innerHTML = "Invalid Hair,starts at 0";
+                            return;
+                        } else {
+                            var hairPrice = document.getElementById("priceTextBox").value;
+                            hairList[which].setPrice(hairPrice);
+                            document.getElementById("message").innerHTML = "Hair " + which + " - Price modified.";
+                            updateHairList();
+                        }
+                    }
+
+                    function addNewHair() {
+                        var hairName = document.getElementById("newHairTextBox").value;
+                        var hairCol = document.getElementById("colTextBox2").value;
+                        var hairPrice = Number(document.getElementById("newHairTextBox2").value);
+                        
+                        if (hairName.length === 0 || hairCol.length === 0 || hairPrice === 0) {
+                            document.getElementById("message").innerHTML = "Must filled all the textBox";
+                            return;
+                        } else {
+                            hairList.add(hairName, hairCol, hairPrice);
+                            document.getElementById("message").innerHTML = "New hair (" + (hairList.length - 1) + ") " + name + " added.";
+                            updateHairList();
+                        }
+                    }
+
+
+                    function updateHairList() {
+                        hairList.showList();
+                    }
+
+                    function sortByName() {
+                        console.log("to sort by name");
+                        sortByKey(hairList, "name");
+                        updateHairList();
+                    }
+
+                    function sortByCol() {
+                        console.log("to sort by col");
+                        sortByKey(hairList, "col");
+                        updateHairList();
+                    }
+
+                    function sortByPrice() {
+                        console.log("to sort by price");
+                        sortByKey(hairList, "price");
+                        updateHairList();
+                    }
+                 // make a new hair list
+                    var newHairList = [];
+                    function addHair(i) {
+                        var newHair = {
+                            name: hairList[i].getName(),
+                            col: hairList[i].getCol(),
+                            price: hairList[i].getPrice()
+
+                        };
+                        newHairList[i] = newHair;
+                    }
+
+
+                    function writeHair() {
+
+                        newHairList = [];
+                        for (var i = 0; i < hairList.length; i++) {
+                            addHair(Number(i));
+                        }
+                        Cookie.setCookieObj("myhair", newHairList, 365);
+                    }
+
+                    function printHair() {
+                        for (var i = 0; i < hairList.length; i++) {
+                            hairList[i].setName(newHairList[i].name);
+                            hairList[i].setCol(newHairList[i].col);
+                            hairList[i].setPrice(newHairList[i].price);
+                        }
+                        updateHairList();
+                    }
+
+                    function readHair() {
+                        newHairList = Cookie.getCookieObj("myhair");
+                        printHair();
+                    }
+
+                    // Main program
+                    var hairList = makeHairList("hairListDiv", "hairClass", "message");
+                    hairList.add("Twist", "Blue", 12);
+                    hairList.add("Kinky", "Yellow", 7);
+                    hairList.add("Marley", "Brown", 11);
+                    hairList.add("Cowrows", "Red", 5);
+
+
+
+
+
+            </script>
+
+        </div>
+
+        <div id = "footer">
+            Kouassi Tchokoto
+        </div>
+
+
+    </body>
+
+</html>
+
+
+

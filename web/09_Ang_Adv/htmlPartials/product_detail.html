@@ -1,0 +1,28 @@
+<h2>Product Detail</h2>
+
+<table>
+    <tr>
+        <td class="fieldName">Id</td>
+        <td class="fieldValue">{{product.productId}}</td>
+    </tr>
+    <tr>
+        <td class="fieldName">Description</td>
+        <td class="fieldValue">{{product.productDesc}}</td>
+    </tr>
+    <tr>
+        <td class="fieldName">Price</td>
+        <td class="fieldValue">{{product.retailPrice}}</td>
+    </tr>
+    <tr>
+        <td class="fieldName">Material</td>
+        <td class="fieldValue">{{product.productMaterial}}</td>
+    </tr>
+    <tr>
+        <td class="fieldName">Image</td>
+        <td class="fieldValue"><img ng-src="{{product.imageName}}" ng-style="{width:'150px'}" /></td>
+    </tr>
+</table>
+
+<p>
+    <a href="#/list">back to list</a>
+</p>

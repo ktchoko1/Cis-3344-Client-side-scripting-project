@@ -1,0 +1,38 @@
+<div style="margin-left:2em;">
+    <h2>Product List: 
+        <span style="font-size:0.8em;"> 
+            <a href="#/insert">Insert</a>
+        </span> 
+    </h2>
+
+    {{deleteMsg}} &nbsp; &nbsp; {{listMsg}}
+    <br><br>
+    
+    <table style="margin-left:2em;">
+        <tr> <!-- rgba(255,255,255,0) is white totally transparent -->
+            <th style="background-color:rgba(255,255,255,0)"></th>
+            <th style="background-color:rgba(255,255,255,0)"></th>
+             
+            <th><a href="" ng-click="sortField = 'productId'; reverse = !reverse">Id <img src="icons/sortUpDown16.png"></a></th>
+            <th style="text-align: left"><a href="" ng-click="sortField = 'productDesc'; reverse = !reverse">Description <img src="icons/sortUpDown16.png"></a></th>
+            <th><a href="" ng-click="sortField = 'retailPrice'; reverse = !reverse">Price <img src="icons/sortUpDown16.png"></a></th>
+            <th><a href="" ng-click="sortField = 'productMaterial'; reverse = !reverse">Material <img src="icons/sortUpDown16.png"></a></th>
+            <th><a href="" ng-click="sortField = 'imageName'; reverse = !reverse">Image <img src="icons/sortUpDown16.png"></a></th>
+        </tr>
+        <tr ng-repeat="product in products| filter:query | orderBy:sortField:reverse">
+            <td  style="background-color:rgba(255,255,255,0)">
+                <a href="#/show/{{product.productId}}"><img src="icons/view.png"></a>
+            </td>
+             
+            <td  style="background-color:rgba(255,255,255,0)">
+                <a href="#/delete/{{product.productId}}"><img src="icons/delete.png"></a>
+            </td>
+            <td>{{product.productId}}</td>
+            <td>{{product.productDesc}}</td>
+            <td>{{product.retailPrice}}</td>
+            <td>{{product.productMaterial}}</td>
+            <td><img ng-src="{{product.imageName}}" ng-style="{width:'150px'}" /></td>
+        </tr>
+    </table>
+
+</div>

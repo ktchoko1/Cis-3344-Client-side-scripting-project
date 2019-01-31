@@ -1,0 +1,130 @@
+
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Braiding Hair Shop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="myStyleSheet.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="pageTitle">
+                Braiding Hair Shop
+            </div>
+            <div id="nav">
+                <div class="menuGroup">
+                    <div onclick="" class="menuHeading">
+                        Styles
+                    </div>
+                    <div class="ddMenu">
+                        <div onclick="linkTo('template/marley.html')">
+                            marley
+                        </div>
+                        <div onclick="linkTo('template/twist.html')">
+                            Twis
+                        </div>
+                        <div onclick="linkTo('template/conrows.html')">
+                            Conrows
+                        </div>
+                        <div onclick="linkTo('template/others.html')">
+                            Others
+                        </div>
+                    </div> <!-- ddMenu -->
+                </div> <!-- menuGroup -->
+
+                <div class="menuGroup">
+                    <div class="menuHeading">
+                        About Us
+                    </div>
+                    <div class="ddMenu">
+                        <div onclick="linkTo('template/contact.html')">
+                            contact
+                        </div>
+                        <div onclick="linkTo('template/location.html')">
+                            Location
+                        </div>
+                    </div> <!-- ddMenu -->
+                </div> <!-- menuGroup -->
+                <div class="menuGroup">
+                    <div class="menuHeading">
+                        Kinky
+                    </div>
+                    <div class="ddMenu">
+                        <div onclick="linkTo('template/price.html')">
+                            Price
+                        </div>
+                        <div onclick="linkTo('template/discount.html')">
+                            Discount
+                        </div>
+                    </div> <!-- ddMenu -->
+                </div> <!-- menuGroup -->
+                <a href="../labs.html" class="menuGroup">
+                    Labs
+                </a> <!-- menuGroup -->
+            </div>  <!-- nav -->
+            <span class="stopFloat"></span>
+        </div> <!-- titleNav -->
+
+        <div id="content">
+            <h3>Hair Description</h3>
+            Cars premiered on May 26, 2006 at Lowe's Motor Speedway in Concord, North Carolina, and was theatrically 
+            released on June 9, 2006 to mostly positive reviews from critics. It was nominated for two Academy Awards
+            including Best Animated Feature, and won the Golden Globe Award for Best Animated Feature Film. The film 
+            was released on DVD on November 7, 2006 and on Blu-ray in 2007. The film was accompanied by the short One
+            Man Band for its theatrical and home media releases. Merchandise based on the film (including scale models 
+            of several of the cars) broke records for retail sales of merchandise based on a Disney/Pixar film,[2] 
+            bringing an estimated $10 billion for 5 years after the film's release.[3] The film was dedicated to Joe 
+            Ranft, who was killed in a car accident during the film's production.
+        </div>
+
+        <div id="footer">Kouassi Tchokoto</div>
+
+        <script src="ajax_fm.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+                            var reuseObj = MakeReuseFw("content"); // this should be a div in the <body>
+                            function linkTo(snippetFileName) {
+                                reuseObj.linkTo(snippetFileName);
+                            }
+
+                            /*  $(document).ready(function () {
+                             
+                             $(".menuHeading").click(function () {  // after nav bar icon is group of menu options. 
+                             $(this).next().toggle(); // hide if showing, show if hiding. 
+                             });
+                             });*/
+
+
+
+
+                            var getmenu = document.getElementsByClassName("menuHeading");
+                            d = document.getElementsByClassName("ddMenu")[0];
+                            d1 = document.getElementsByClassName("ddMenu")[1];
+
+                            getmenu[0].onclick = function () {
+                                if (d.style.display === "block") {
+                                    d.style.display = "none";
+                                } else {
+                                    d.style.display = "block";
+                                }
+                            };
+
+                            getmenu[1].onclick = function () {
+                                if (d1.style.display === "block") {
+                                    d1.style.display = "none";
+                                } else {
+                                    d1.style.display = "block";
+                                }
+                            };
+
+
+        </script>
+    </body>
+</html>
